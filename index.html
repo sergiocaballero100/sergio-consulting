@@ -42,6 +42,17 @@
     .social-links span{color:rgba(245,243,233,.58)}
     .social-links a{color:var(--lime)}
     .footer-socials{display:flex;gap:18px;align-items:center}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .chat-launcher{position:fixed;right:28px;bottom:28px;z-index:20;display:flex;align-items:center;gap:10px;padding:14px 18px;border:0;background:var(--dark);color:#fff;box-shadow:0 12px 30px rgba(24,33,59,.2);font:700 12px 'Manrope',sans-serif;cursor:pointer}
+    .chat-launcher>span:first-child{display:grid;place-items:center;width:22px;height:22px;border:1px solid var(--lime);border-radius:50%;color:var(--lime);font-size:13px}
+    .chat-widget{position:fixed;right:28px;bottom:84px;z-index:21;width:min(370px,calc(100vw - 32px));overflow:hidden;background:var(--paper);border:1px solid rgba(39,59,145,.2);box-shadow:0 20px 50px rgba(24,33,59,.2);opacity:0;pointer-events:none;transform:translateY(16px) scale(.98);transform-origin:bottom right;transition:opacity .2s ease,transform .2s ease}
+    .chat-widget.is-open{opacity:1;pointer-events:auto;transform:translateY(0) scale(1)}
+    .chat-header{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;background:var(--dark);color:#fff}
+    .chat-header>div{display:flex;flex-direction:column;gap:4px}.chat-header strong{font-size:15px;letter-spacing:-.03em}.chat-status{font:10px 'DM Mono',monospace;text-transform:uppercase;letter-spacing:.05em;color:var(--lime)}.chat-status i{display:inline-block;width:6px;height:6px;margin-right:5px;border-radius:50%;background:var(--lime)}
+    .chat-close{padding:0;border:0;background:transparent;color:#fff;font-size:25px;line-height:1;cursor:pointer}
+    .chat-messages{display:flex;flex-direction:column;gap:12px;max-height:350px;min-height:230px;padding:18px;overflow-y:auto;background:#fff}.chat-message{max-width:88%;padding:11px 13px;font-size:12px;line-height:1.55}.bot-message{align-self:flex-start;background:var(--cream);color:var(--ink)}.user-message{align-self:flex-end;background:var(--dark);color:#fff}
+    .chat-quick-actions{display:flex;flex-wrap:wrap;gap:7px}.chat-quick-actions button{padding:8px 10px;border:1px solid rgba(39,59,145,.24);background:var(--paper);color:var(--dark);font:700 10px 'Manrope',sans-serif;cursor:pointer}.chat-quick-actions button:hover{background:var(--lime)}
+    .chat-form{display:flex;gap:8px;padding:12px;border-top:1px solid rgba(39,59,145,.15);background:var(--paper)}.chat-form input{min-width:0;flex:1;padding:11px 12px;border:1px solid rgba(39,59,145,.2);background:#fff;color:var(--ink);font:12px 'Manrope',sans-serif}.chat-form input:focus{outline:2px solid var(--lime);outline-offset:-2px}.chat-form button{width:40px;border:0;background:var(--dark);color:#fff;font-size:18px;cursor:pointer}
     .payment-panel{display:grid;grid-template-columns:.8fr 1.2fr;gap:50px;margin-top:68px;padding-top:34px;border-top:1px solid var(--line)}
     .payment-panel h3{margin:10px 0 8px;font-size:28px;letter-spacing:-.06em}
     .payment-panel h3 em{font-style:normal;color:#6857c7}
@@ -52,7 +63,7 @@
     .payment-option strong{font-size:20px;letter-spacing:-.04em;color:var(--dark)}
     .payment-option span{color:var(--muted);font-size:11px;line-height:1.4}
     .payment-option b{float:right;color:var(--dark);font-size:17px}
-    @media(max-width:760px){.support-grid{grid-template-columns:1fr}.featured-plan{transform:none}.social-links{flex-wrap:wrap;gap:12px}.footer-socials{flex-wrap:wrap}}
+    @media(max-width:760px){.support-grid{grid-template-columns:1fr}.featured-plan{transform:none}.chat-launcher{right:16px;bottom:16px}.chat-widget{right:16px;bottom:72px}.chat-launcher-label{display:none}.social-links{flex-wrap:wrap;gap:12px}.footer-socials{flex-wrap:wrap}}
   </style>
 </head>
 <body>
@@ -106,5 +117,56 @@
     <section id="contact" class="contact-band"><div class="section-wrap contact-layout"><div><div class="section-kicker light">05 / Siguiente paso</div><h2>Hagamos que<br><em>avance.</em></h2></div><div><p>Cuéntame qué está pasando en tu operación y encontraremos el siguiente movimiento con sentido.</p><a class="button button-light" href="mailto:sergiocaballero2@icloud.com">Escríbeme un correo <span>↗</span></a><div class="social-links"><span>También estoy en</span><a href="https://www.facebook.com/" target="_blank" rel="noreferrer">Facebook ↗</a><a href="https://www.instagram.com/" target="_blank" rel="noreferrer">Instagram ↗</a></div></div></div></section>
   </main>
   <footer class="site-footer section-wrap"><span>© 2026 Sergio Caballero</span><span>Dynamics 365 · ERP · Transformation</span><div class="footer-socials"><a href="https://www.facebook.com/" target="_blank" rel="noreferrer" aria-label="Facebook">Facebook</a><a href="https://www.instagram.com/" target="_blank" rel="noreferrer" aria-label="Instagram">Instagram</a><a href="#top">Volver arriba ↑</a></div></footer>
+  <button class="chat-launcher" type="button" aria-label="Abrir asistente de soporte" aria-expanded="false"><span aria-hidden="true">✦</span><span class="chat-launcher-label">¿Hablamos?</span></button>
+  <aside class="chat-widget" aria-label="Asistente de Sergio Caballero" aria-hidden="true">
+    <div class="chat-header"><div><span class="chat-status"><i></i> En línea</span><strong>Asistente Sergio</strong></div><button class="chat-close" type="button" aria-label="Cerrar asistente">×</button></div>
+    <div class="chat-messages" aria-live="polite"><div class="chat-message bot-message">Hola, soy el asistente de Sergio. Puedo orientarte sobre soporte Dynamics 365, bolsas de horas y formas de pago.</div><div class="chat-quick-actions"><button type="button" data-question="¿Qué incluye el soporte?">Soporte</button><button type="button" data-question="¿Qué bolsa de horas me conviene?">Bolsas de horas</button><button type="button" data-question="¿Cómo puedo pagar?">Formas de pago</button></div></div>
+    <form class="chat-form"><label class="sr-only" for="chat-input">Escribe tu pregunta</label><input id="chat-input" type="text" placeholder="Escribe tu pregunta..." autocomplete="off"><button type="submit" aria-label="Enviar mensaje">↗</button></form>
+  </aside>
+  <script>
+    const chatLauncher = document.querySelector('.chat-launcher');
+    const chatWidget = document.querySelector('.chat-widget');
+    const chatClose = document.querySelector('.chat-close');
+    const chatMessages = document.querySelector('.chat-messages');
+    const chatForm = document.querySelector('.chat-form');
+    const chatInput = document.querySelector('#chat-input');
+    const quickActions = document.querySelectorAll('[data-question]');
+
+    const addChatMessage = (text, type) => {
+      const message = document.createElement('div');
+      message.className = `chat-message ${type}-message`;
+      message.textContent = text;
+      chatMessages.appendChild(message);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    };
+
+    const getChatReply = (question) => {
+      const normalizedQuestion = question.toLowerCase();
+      if (normalizedQuestion.includes('bolsa') || normalizedQuestion.includes('hora')) return 'Hay bolsas de 5, 10 y 20 horas. En cada tarjeta puedes elegir PayPal o Mercado Pago para continuar.';
+      if (normalizedQuestion.includes('pago') || normalizedQuestion.includes('paypal') || normalizedQuestion.includes('mercado')) return 'Puedes pagar con PayPal o Mercado Pago. Abre la bolsa que te interese y selecciona tu método de pago.';
+      if (normalizedQuestion.includes('soporte') || normalizedQuestion.includes('dynamics') || normalizedQuestion.includes('erp')) return 'El soporte cubre Dynamics 365 Finance & Operations, incidencias funcionales, análisis de procesos y mejoras. También hay atención L1, L2 y L3.';
+      if (normalizedQuestion.includes('contact') || normalizedQuestion.includes('correo') || normalizedQuestion.includes('proyecto')) return 'Puedes escribir directamente a sergiocaballero2@icloud.com para revisar tu proyecto y definir el siguiente paso.';
+      return 'Puedo ayudarte con soporte Dynamics 365, bolsas de horas, pagos o contacto. Prueba una de esas opciones o escríbeme tu pregunta con más detalle.';
+    };
+
+    const submitChatQuestion = (question) => {
+      const cleanQuestion = question.trim();
+      if (!cleanQuestion) return;
+      addChatMessage(cleanQuestion, 'user');
+      window.setTimeout(() => addChatMessage(getChatReply(cleanQuestion), 'bot'), 220);
+    };
+
+    const toggleChat = (isOpen) => {
+      chatWidget.classList.toggle('is-open', isOpen);
+      chatWidget.setAttribute('aria-hidden', String(!isOpen));
+      chatLauncher.setAttribute('aria-expanded', String(isOpen));
+      if (isOpen) chatInput.focus();
+    };
+
+    chatLauncher.addEventListener('click', () => toggleChat(!chatWidget.classList.contains('is-open')));
+    chatClose.addEventListener('click', () => toggleChat(false));
+    chatForm.addEventListener('submit', (event) => { event.preventDefault(); submitChatQuestion(chatInput.value); chatInput.value = ''; });
+    quickActions.forEach((button) => button.addEventListener('click', () => submitChatQuestion(button.dataset.question)));
+  </script>
 </body>
 </html>
