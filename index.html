@@ -26,6 +26,14 @@
     .plan-hours{font-size:34px;line-height:1.1;letter-spacing:-.06em;color:var(--dark)}
     .support-plan p{max-width:260px;color:var(--muted);font-size:13px;line-height:1.6;margin:18px 0 auto}
     .support-plan .button{align-self:flex-start;margin-top:22px;padding:13px 16px}
+    .payment-details{margin-top:22px}
+    .payment-details summary{cursor:pointer;list-style:none;margin-top:0!important}
+    .payment-details summary::-webkit-details-marker{display:none}
+    .payment-details[open] summary span{display:inline-block;transform:rotate(90deg)}
+    .plan-payment{display:grid;gap:8px;margin-top:12px;padding:12px;background:#fff;border:1px solid rgba(39,59,145,.16)}
+    .plan-payment span{font-family:'DM Mono',monospace;text-transform:uppercase;font-size:9px;letter-spacing:.04em;color:var(--muted)}
+    .plan-payment a{display:flex;justify-content:space-between;padding:7px 0;color:var(--dark);font-size:12px;font-weight:800;border-top:1px solid rgba(39,59,145,.12)}
+    .plan-payment b{font-size:15px}
     .featured-plan{background:#e1dcff;transform:translateY(-10px);box-shadow:0 12px 0 rgba(39,59,145,.12)}
     .plan-badge{position:absolute;top:19px;right:22px;font-family:'DM Mono',monospace;text-transform:uppercase;font-size:9px;letter-spacing:.06em;color:var(--dark)}
     .support-note{margin:25px 0 0;color:var(--muted);font-size:13px}
@@ -44,7 +52,7 @@
     .payment-option strong{font-size:20px;letter-spacing:-.04em;color:var(--dark)}
     .payment-option span{color:var(--muted);font-size:11px;line-height:1.4}
     .payment-option b{float:right;color:var(--dark);font-size:17px}
-    @media(max-width:760px){.support-grid{grid-template-columns:1fr}.featured-plan{transform:none}.payment-panel{display:block;margin-top:55px}.payment-panel>div+div{margin-top:28px}.payment-options{grid-template-columns:1fr}.social-links{flex-wrap:wrap;gap:12px}.footer-socials{flex-wrap:wrap}}
+    @media(max-width:760px){.support-grid{grid-template-columns:1fr}.featured-plan{transform:none}.social-links{flex-wrap:wrap;gap:12px}.footer-socials{flex-wrap:wrap}}
   </style>
 </head>
 <body>
@@ -88,18 +96,11 @@
       <div class="section-kicker">04 / Soporte a tu ritmo</div>
       <div class="section-heading"><h2>Compra horas cuando<br><em>tu operación lo necesite.</em></h2><p>Resuelve incidencias, aclara dudas funcionales o impulsa mejoras en Dynamics 365 F&amp;O con un paquete de horas flexible y sin contratos largos.</p></div>
       <div class="support-grid">
-        <article class="support-plan"><span class="card-index">01</span><h3>Bolsa Inicial</h3><strong class="plan-hours">5 horas</strong><p>Para dudas puntuales, diagnósticos y ajustes de baja complejidad.</p><a class="button button-dark" href="mailto:sergiocaballero2@icloud.com?subject=Compra%20de%20Bolsa%20Inicial">Solicitar bolsa <span>↗</span></a></article>
-        <article class="support-plan featured-plan"><span class="plan-badge">Más elegido</span><span class="card-index">02</span><h3>Bolsa Continua</h3><strong class="plan-hours">10 horas</strong><p>Soporte recurrente para mantener el equipo avanzando durante el mes.</p><a class="button button-dark" href="mailto:sergiocaballero2@icloud.com?subject=Compra%20de%20Bolsa%20Continua">Solicitar bolsa <span>↗</span></a></article>
-        <article class="support-plan"><span class="card-index">03</span><h3>Bolsa Operativa</h3><strong class="plan-hours">20 horas</strong><p>Un bloque de acompañamiento para proyectos, mejoras y estabilización.</p><a class="button button-dark" href="mailto:sergiocaballero2@icloud.com?subject=Compra%20de%20Bolsa%20Operativa">Solicitar bolsa <span>↗</span></a></article>
+        <article class="support-plan"><span class="card-index">01</span><h3>Bolsa Inicial</h3><strong class="plan-hours">5 horas</strong><p>Para dudas puntuales, diagnósticos y ajustes de baja complejidad.</p><details class="payment-details"><summary class="button button-dark">Solicitar bolsa <span>↘</span></summary><div class="plan-payment"><span>Elige tu método de pago</span><a href="https://www.paypal.me/jsergiocaballero@gmail.com" target="_blank" rel="noreferrer">PayPal <b>↗</b></a><a href="https://link.mercadopago.com.mx/jsergiocaballero@gmail.com" target="_blank" rel="noreferrer">Mercado Pago <b>↗</b></a></div></details></article>
+        <article class="support-plan featured-plan"><span class="plan-badge">Más elegido</span><span class="card-index">02</span><h3>Bolsa Continua</h3><strong class="plan-hours">10 horas</strong><p>Soporte recurrente para mantener el equipo avanzando durante el mes.</p><details class="payment-details"><summary class="button button-dark">Solicitar bolsa <span>↘</span></summary><div class="plan-payment"><span>Elige tu método de pago</span><a href="https://www.paypal.me/jsergiocaballero@gmail.com" target="_blank" rel="noreferrer">PayPal <b>↗</b></a><a href="https://link.mercadopago.com.mx/jsergiocaballero@gmail.com" target="_blank" rel="noreferrer">Mercado Pago <b>↗</b></a></div></details></article>
+        <article class="support-plan"><span class="card-index">03</span><h3>Bolsa Operativa</h3><strong class="plan-hours">20 horas</strong><p>Un bloque de acompañamiento para proyectos, mejoras y estabilización.</p><details class="payment-details"><summary class="button button-dark">Solicitar bolsa <span>↘</span></summary><div class="plan-payment"><span>Elige tu método de pago</span><a href="https://www.paypal.me/jsergiocaballero@gmail.com" target="_blank" rel="noreferrer">PayPal <b>↗</b></a><a href="https://link.mercadopago.com.mx/jsergiocaballero@gmail.com" target="_blank" rel="noreferrer">Mercado Pago <b>↗</b></a></div></details></article>
       </div>
       <p class="support-note">¿Necesitas una bolsa personalizada? <a href="mailto:sergiocaballero2@icloud.com?subject=Bolsa%20de%20horas%20personalizada">Hablemos de tu operación <span>↗</span></a></p>
-      <div id="payment" class="payment-panel">
-        <div><div class="section-kicker">Pago seguro</div><h3>Elige cómo quieres <em>pagar.</em></h3><p>Después de seleccionar tu bolsa de horas, completa el pago con tu plataforma preferida.</p></div>
-        <div class="payment-options">
-          <a class="payment-option" href="https://www.paypal.me/jsergiocaballero@gmail.com" target="_blank" rel="noreferrer"><strong>PayPal</strong><span>Pago con tarjeta o saldo PayPal <b>↗</b></span></a>
-          <a class="payment-option" href="https://link.mercadopago.com.mx/jsergiocaballero@gmail.com" target="_blank" rel="noreferrer"><strong>Mercado Pago</strong><span>Pago con tarjeta, transferencia o saldo <b>↗</b></span></a>
-        </div>
-      </div>
     </section>
 
     <section id="contact" class="contact-band"><div class="section-wrap contact-layout"><div><div class="section-kicker light">05 / Siguiente paso</div><h2>Hagamos que<br><em>avance.</em></h2></div><div><p>Cuéntame qué está pasando en tu operación y encontraremos el siguiente movimiento con sentido.</p><a class="button button-light" href="mailto:sergiocaballero2@icloud.com">Escríbeme un correo <span>↗</span></a><div class="social-links"><span>También estoy en</span><a href="https://www.facebook.com/" target="_blank" rel="noreferrer">Facebook ↗</a><a href="https://www.instagram.com/" target="_blank" rel="noreferrer">Instagram ↗</a></div></div></div></section>
